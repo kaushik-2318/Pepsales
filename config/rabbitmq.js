@@ -19,3 +19,4 @@ const connectRabbitMQ = async () => {
 
 export const getChannel = () => channel;
 export default connectRabbitMQ;
+

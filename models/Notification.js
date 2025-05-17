@@ -19,6 +19,10 @@ const notificationSchema = new mongoose.Schema({
         type: String,
         default: 'pending',
     },
+    read: {
+        type: Boolean,
+        default: false,
+    },
     createdAt: {
         type: Date,
         default: Date.now,

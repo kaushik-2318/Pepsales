@@ -17,9 +17,15 @@ export const sendNotification = async (req, res) => {
 
 export const getUserNotifications = async (req, res) => {
     try {
-        const notifications = await Notification.find({ userId: req.params.id });
+        const { id } = req.params;
+
+        const notifications = await Notification.find({ userId: id, type: 'in-app' })
+            .sort({ createdAt: -1 })
+            .limit(10); // Fetch latest 10 notifications
+
         res.status(200).json(notifications);
     } catch (error) {
-        res.status(500).json({ success: false, error: error.message });
+        console.error('Error fetching notifications:', error.message);
+        res.status(500).json({ error: error.message });
     }
 };

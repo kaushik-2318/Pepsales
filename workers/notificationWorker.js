@@ -24,11 +24,12 @@ const processNotification = async (msg) => {
                 break;
 
             case 'sms':
-                sendSMS(notification.message);
+                await sendSMS(user.phone, notification.message);
                 break;
 
+
             case 'in-app':
-                sendInApp(notification.message);
+                await sendInApp(notification.userId, notification.message);
                 break;
 
             default:
